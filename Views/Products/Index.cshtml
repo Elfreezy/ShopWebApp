@@ -1,0 +1,22 @@
+﻿@model IQueryable<Product>
+
+@{ 
+}
+
+<div class="div-box">
+    @if (Model.Any())
+    { 
+        <ul class="big-image-list">
+            @foreach (Product item in Model)
+            { 
+                <li>
+                    <a asp-area="" asp-controller="Products" asp-action="Index" asp-route-id="@item.Id">
+                        <img src="~/img/@item.TitleImagePath" class="left" />
+                    </a>
+                    <h4>@item.Title</h4>
+                    <p>@item.Subtitle</p>
+                </li>
+            }
+        </ul>
+    }
+</div>

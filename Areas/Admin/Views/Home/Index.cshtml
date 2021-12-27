@@ -1,0 +1,66 @@
+﻿@model IQueryable<ServiceItem>
+
+
+@{ string strTitle = "Панель администратора";
+    ViewBag.Title = strTitle; }
+
+<h2>@strTitle</h2>
+<!--
+
+    <div>
+    
+    <div>
+        <h3>Наши услуги</h3>
+        <div class="div-box">
+            <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id=""> Добавить услугу </a>
+        </div>
+        @if (@Model.Any())
+        {
+<div>
+    <ul>
+        @foreach (ServiceItem item in Model)
+        {
+        <li>
+            <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@item.Id">@($"{item.Title}")</a>
+            <a asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
+            <form style="display: inline-block;" id="form-@item.Id" asp-area="Admin" asp-controller="ServiceItems" asp-action="Delete" asp-route-id="@item.Id" method="post">
+                <input type="hidden" name="id" value="@item.Id" />
+                <a href="#" onclick="document.getElementById('form-@item.Id').submit()">Удалить</a>
+            </form>
+
+        </li>
+}
+    </ul>
+</div>}
+ </div>
+
+
+    <div class="div-box">
+    <h3>Редактировать страницы сайта</h3>
+    <div class="div-box">
+        <ul>
+            <li><a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageIndex"> Главная </a></li>
+            <li><a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageServices"> Наши услуги </a></li>
+            <li> <a asp-area="Admin" asp-controller="TextFields" asp-action="Edit" asp-route-codeWord="PageContacts"> Контакты </a></li>
+        </ul>
+    </div>
+</div>
+</div>
+-->
+
+
+
+<div class="div-box">
+    <h3>Магазины</h3>
+    <div class="div-box">
+        <a asp-area="Admin" asp-controller="Shops" asp-action="Index" asp-route-id="">Редактировать магазины </a>
+    </div>
+</div>
+
+<div class="div-box">
+    <h3>Товары</h3>
+    <div class="div-box">
+        <a asp-area="Admin" asp-controller="Products" asp-action="Index" asp-route-id="">Редактировать товары </a>
+    </div>
+</div>
+

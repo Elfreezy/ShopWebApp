@@ -1,0 +1,29 @@
+<!--model WebApp.Models.LoginViewModel--> <!--Прямое указания пространства имен-->
+@model LoginViewModel
+
+<div>
+    <h1>Вход в личный кабинет</h1>
+    <div class="div-box">
+        <form asp-area="" asp-controller="Account" asp-action="Login" method="post" asp-route-returnUrl="@ViewBag.returnUrl">
+            <div asp-validation-summary="All"></div>
+            <div>
+                <label asp-for="UserName"></label><br />
+                <input asp-for="UserName" />
+                <span asp-validation-for="UserName"></span>
+            </div>
+            <div>
+                <label asp-for="UserPassword"></label><br />
+                <input asp-for="UserPassword" />
+                <span asp-validation-for="UserPassword"></span>
+            </div>
+            <div>
+                <label asp-for="RememberMe"></label><br />
+                <input asp-for="RememberMe" />
+                <span asp-validation-for="RememberMe"></span>
+            </div>
+            <div>
+                <input type="submit" value="Войти" />
+            </div>
+        </form>
+    </div>
+</div>

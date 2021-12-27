@@ -1,0 +1,38 @@
+﻿@model IQueryable<Product>
+
+@{
+    string strTitle = "Редактировать товары";
+    ViewBag.Title = strTitle;
+}
+
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <div class="div-box">
+            <a asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id=""> Добавить </a>
+        </div>
+        @if (@Model.Any())
+        {
+        <div>
+            <ul>
+                @foreach (Product item in Model)
+                {
+                <li>
+                    <a asp-area="" asp-controller="Products" asp-action="Index" asp-route-id="@item.Id">@($"{item.Title}")</a>
+
+                    <a asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Редактировать</a>
+
+                    <form style="display: inline-block;" id="form-@item.Id" asp-area="Admin" asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id" method="post" class="btn btn-danger">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <a href="#" onclick="document.getElementById('form-@item.Id').submit()">Удалить</a>
+                    </form>
+
+
+                </li>                
+                }
+            </ul>
+        </div>
+         }
+    </div>
+</div>

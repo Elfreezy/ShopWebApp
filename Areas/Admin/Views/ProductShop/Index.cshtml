@@ -1,0 +1,36 @@
+﻿@model IQueryable<ProductShop>
+
+@{
+    string strTitle = "Редактировать товары для магазинов";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <div class="div-box">
+            <a asp-area="Admin" asp-controller="ProductShop" asp-action="Edit" asp-route-id=""> Добавить товар в магазин </a>
+        </div>
+
+        <ul class="big-image-list">
+            @foreach (Product item in ViewBag.Products)
+            {
+            <li>
+                <a asp-area="" asp-controller="Product" asp-action="Show" asp-route-id="@item.Id">
+                    <img src="~/img/@item.TitleImagePath" class="left" />
+                </a>
+                <h4>@item.Title</h4>
+                <label>Кол-во: @item.Count</label>
+                <label>Цена: @item.Price</label>
+                <a asp-area="Admin" asp-controller="Product" asp-action="Edit" asp-route-id="">Редактировать</a>
+                
+                <form style="display: inline-block;" id="form-@item.Id" asp-area="Admin" asp-controller="Shops" asp-action="Delete" asp-route-id="@item.Id" method="post">
+                    <input type="hidden" name="id" value="@item.Id" />
+
+                    <a href="#" onclick="document.getElementById('form-@item.Id').submit()">Удалить</a>
+                </form>
+            </li>
+            }
+        </ul>
+    </div>
+</div>

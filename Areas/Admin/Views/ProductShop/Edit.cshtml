@@ -1,0 +1,48 @@
+﻿@model ShopWebApp.Domain.Entities.ProductShop
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Изменить количество товара в магазине</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ShopsId" class="control-label"></label>
+                <div>
+                    @Html.DropDownList("ShopId", ViewBag.Shops as SelectList)
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductsId" class="control-label"></label>
+                <div>
+                    @Html.DropDownList("ProductId", ViewBag.Products as SelectList)
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="number" name="count" /><br /><br />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Изменить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<div>
+    <a asp-action="Index">Вернуться</a>
+</div>
+
+
+<!--
+    section Scripts {
+    {await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+-->

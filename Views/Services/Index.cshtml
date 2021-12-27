@@ -1,0 +1,25 @@
+﻿@model IQueryable<ServiceItem>
+
+@{ 
+    TextField textFiel = ViewBag.TextField;
+
+    ViewBag.Title = textFiel.Title;
+    ViewBag.Text = textFiel.Text;
+}
+
+<div class="div-box">
+    @if (Model.Any())
+    { 
+        <ul class="big-image-list">
+            @foreach (ServiceItem item in Model)
+            { 
+                <li>
+                    <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@item.Id">
+                        <img src="~/img/@item.TitleImagePath" class="left" />
+                    </a>
+                    <h4>@item.Title</h4>
+                </li>
+            }
+        </ul>
+    }
+</div>

@@ -1,0 +1,17 @@
+﻿@model ServiceItem
+
+@{ 
+    ViewBag.Title = Model.Title;
+    ViewBag.Text = Model.Text;
+}
+
+<div class="div-box">
+    <h2>
+        @Model.Title
+    </h2>
+    <div> <img src="~/img/@Model.TitleImagePath" class="img-box"/> </div>
+</div>
+
+<div class="div-box">
+    @Html.Raw(Model.Text)
+</div>

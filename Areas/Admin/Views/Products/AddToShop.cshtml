@@ -1,0 +1,35 @@
+﻿@model IQueryable<Product>
+
+
+@{
+    string strTitle = "Товары со склада";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <div class="div-box">
+            <a asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id=""> Добавить товары на склад </a>
+        </div>
+        @if (@Model.Any())
+        {
+        <div>
+            <ul>
+                @foreach (Product item in Model)
+                {
+                <li>
+                    <a asp-area="" asp-controller="Shops" asp-action="Show" asp-route-id="@item.Id">@item.Title</a>
+                    <div class="div-box">
+                        <label asp-for="@item.Count"></label><br />
+                        <input asp-for="@item.Count" />
+                        <span asp-validation-for="@item.Count"></span>
+                    </div>
+                    <a asp-area="Admin" asp-controller="Shops" asp-action="AddToShop" asp-route-id="@item.Id" asp-route-count="@item.Count">Добавить в магазин @Html.Raw(httpContextAccessor.HttpContext.Request.Cookies["ShopTitle"])</a>
+                </li>
+                }
+            </ul>
+        </div>
+        }
+    </div>
+</div>
